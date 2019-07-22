@@ -1,6 +1,6 @@
 <?php
-$day = 64;
-switch($day){
+$day = rand(1, 10);
+switch ($day) {
     case 1:
         echo 'Это рабочий день';
         break;
@@ -32,3 +32,5 @@ switch($day){
     default:
         echo 'Неизвестный день';
 }
+
+?>
