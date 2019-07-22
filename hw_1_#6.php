@@ -3,8 +3,8 @@
     <title>Multiply it</title>
     <style>
         td {
-            border:1px solid #1d1d1d;
-            padding:10px;
+            border: 1px solid #1d1d1d;
+            padding: 10px;
         }
     </style>
 </head>
@@ -12,23 +12,23 @@
 <?php
 
 echo '<table>';
-for($i=1;$i<=10;$i++){
+for ($i = 1; $i <= 10; $i++) {
     echo '<tr>';
-    $y=1;
-    for($x=1;$x<=10;$x++){
+    $y = 1;
+    for ($x = 1; $x <= 10; $x++) {
 
         echo '<td>';
-        $res = $i*$y;
+        $res = $i * $y;
         $y++;
-        if($x>1 && $i>1){
-            if($res%2==0){
+        if ($x > 1 && $i > 1) {
+            if ($x % 2 == 0 && $i % 2 == 0) {
                 echo '(' . $res . ')';
-            }
-            else {
+            } elseif ($x % 2 !== 0 && $i % 2 !== 0) {
                 echo '[' . $res . ']';
+            } else {
+                echo $res;
             }
-        }
-        else {
+        } else {
             echo $res;
         }
 
