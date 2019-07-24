@@ -71,9 +71,9 @@ function task2()
     $output = json_encode('output.json');
     $output2 = json_encode('output2.json');
 
-    $result = array_diff($output, $output2);
+    $result =  array_diff_assoc($output, $output2);
 
-    print_r($result);
+    echo $result;
 
 
 }
@@ -88,8 +88,9 @@ function task3()
         $array[$i] = $number;
 
     }
+
+    print_r($array);
     $randomNumbers = fopen('randomnumbers.csv', 'w');
-    foreach ($array as $item) {
-        fputcsv($randomNumbers, $item, ',');
-    }
+    fputcsv($randomNumbers, $array, ',');
+
 }
