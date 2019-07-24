@@ -62,20 +62,25 @@ function task2()
         $fp = fopen('output.json', $decide);
         file_put_contents('output2.json', $fp);
 
-
     } else {
         $decide = 'r';
         $fp = fopen('output.json', $decide);
         file_put_contents('output2.json', $fp);
     }
 
-    $output = file_get_contents('output.json');
-    $output2 = file_get_contents('output2.json');
+    $output = json_encode('output.json');
+    $output2 = json_encode('output2.json');
+
+    $result = array_diff($output, $output2);
+
+    print_r($result);
+
+
 
 
 }
 
-// task 3 в процессе
+// task 3
 
 function task3()
 {
