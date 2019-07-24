@@ -71,7 +71,7 @@ function task2()
     $output = json_encode('output.json');
     $output2 = json_encode('output2.json');
 
-    $result =  array_diff_assoc($output, $output2);
+    $result = array_diff_assoc($output, $output2);
 
     echo $result;
 
@@ -89,8 +89,16 @@ function task3()
 
     }
 
-    print_r($array);
+
     $randomNumbers = fopen('randomnumbers.csv', 'w');
     fputcsv($randomNumbers, $array, ',');
+    $even = fopen('randomnumbers.csv', 'r');
+    while ($str = fgetcsv($even, 1000 * 1024, ',')) {
+        foreach ($str as $item) {
+            if ($item % 2 === 0) {
+                echo $item . ' ';
+            }
 
+        }
+    }
 }
