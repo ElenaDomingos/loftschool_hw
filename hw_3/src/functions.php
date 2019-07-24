@@ -76,8 +76,6 @@ function task2()
     print_r($result);
 
 
-
-
 }
 
 // task 3
@@ -90,5 +88,8 @@ function task3()
         $array[$i] = $number;
 
     }
-    print_r($array);
+    $randomNumbers = fopen('randomnumbers.csv', 'w');
+    foreach ($array as $item) {
+        fputcsv($randomNumbers, $item, ',');
+    }
 }
