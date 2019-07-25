@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="css/vendors.min.css">
     <link rel="stylesheet" href="css/main.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+#message, #errormessage {color:#fff !important;}
+</style>
 </head>
 <body>
 <div class="wrapper">
@@ -513,19 +516,19 @@
                             <div class="order__form-buttons">
                                 <div class="order__form-row">
                                     <label class="order__radio">
-                                        <input class="order__radio-elem" name="payment" type="radio" id="change">
+                                        <input class="order__radio-elem" name="payment" type="radio" id="change" value="1">
                                         <div class="order__radio-fake"></div>
                                         <div class="order__radio-title">Потребуется сдача</div>
                                     </label>
                                     <label class="order__radio">
-                                        <input class="order__radio-elem" name="payment" type="radio" id="paymentcard">
+                                        <input class="order__radio-elem" name="payment" type="radio" id="paymentcard" value="2">
                                         <div class="order__radio-fake"></div>
                                         <div class="order__radio-title">Оплата по карте</div>
                                     </label>
                                 </div>
                                 <div class="order__form-row">
                                     <label class="order__radio order__radio_checkbox">
-                                        <input class="order__radio-elem" name="callback" type="checkbox" id="callback">
+                                        <input class="order__radio-elem" name="callback" type="checkbox" id="callback" value='1'>
                                         <div class="order__radio-fake"></div>
                                         <div class="order__radio-title">Не перезванивать</div>
                                     </label>
@@ -654,9 +657,9 @@
                 appt = $('#appt').val(),
                 floor = $('#floor').val(),
                 comment = $('#comment').val(),
-                change = $('#change').val(),
-                paycard = $('#paymentcard').val(),
-                callback = $('#callback').val();
+                change = $('#change:checked').val(),
+                paycard = $('#paymentcard:checked').val(),
+                callback = $('#callback:checked').val();
             $.ajax({
                 url: "order.php",
                 type: "post",
