@@ -68,7 +68,7 @@ $stmt1->bindParam(':paycard', $paycard);
 $stmt1->bindParam(':callback', $callback);
 
 if ($stmt1->execute()) {
-// Узнаем номер последнего заказа, который по логике должен быть именно этоим заказом.
+// Узнаем номер последнего заказа, который по логике должен быть именно этим заказом.
     $select = "SELECT id FROM `orders` ORDER BY id DESC LIMIT 1";
     $stm = $pdo->query($select);
     $stm->setFetchMode(PDO::FETCH_ASSOC);
