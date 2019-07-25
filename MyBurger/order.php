@@ -91,7 +91,7 @@ if ($stmt1->execute()) {
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=iso-8859-1\n";
 
-    $subject = "Ваш заказ будет доставлен по адресу: " . $street . ", " . $building . ", корпус: " . $part . ", кв.: " . $appt . ". Вы заказали DarkBeefBurger за 500 рублей." . $yourorder;
+    $subject = "Ваш заказ будет доставлен по адресу: " . $street . ", " . $building . ", корпус: " . $part . ", кв.: " . $appt . ". Вы заказали DarkBeefBurger за 500 рублей.<br>" . $yourorder;
     if (mail($email, $point, $subject, $headers)) {
         echo 1;
     }
