@@ -46,9 +46,8 @@ function task1($xml_file)
 function task2()
 {
     $library = [
-        'books' => [
-            ['name' => 'The Dead Souls', 'author' => 'Gogol', 'pages' => 230]
-        ]
+        'books' => ['name' => 'The Dead Souls', 'author' => 'Gogol', 'pages' => 230]
+
 
 
     ];
@@ -56,14 +55,15 @@ function task2()
     $json_data = json_encode($library);
     file_put_contents('output.json', $json_data);
 
-    $arrayOpen = file_get_contents('output.json');
-    $rand =  rand(0,1);
+    $arr = file_get_contents('output.json');
+    $arr1 = json_decode($arr, true);
+    $rand = rand(0, 1);
 
-    if($rand){
-        $arrayOpen['books']['author']= 'Oblomov';
+    if ($rand) {
+        $arr1['books']['price'] = 300;
         echo 'Массив был изменен';
     }
-    $json_data2 = json_decode($arrayOpen);
+    $json_data2 = json_encode($arr1);
 
     file_put_contents('output2.json', $json_data2);
 
@@ -73,15 +73,24 @@ function task2()
     $decodOutput = json_decode($openOutput, true);
     $decodOutput2 = json_decode($openOutput2, true);
 
+
+    echo '<pre>';
     print_r($decodOutput);
-    echo '<br>';
+    echo '</pre>';
+
+
+    echo '<pre>';
     print_r($decodOutput2);
+    echo '</pre>';
+
 
     $diff = array_diff_assoc($decodOutput, $decodOutput2);
 
-    if(!empty($diff)){
+    if (!empty($diff)) {
         echo 'Разница в массивах: ';
+        echo '<pre>';
         print_r($diff);
+        echo '</pre>';
     }
 
 }
@@ -114,14 +123,14 @@ function task3()
 
 // task 4
 
-function task4() {
-$fp = fopen('https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json' , 'r');
-file_put_contents('filejson.json', $fp);
-$file = file_get_contents('filejson.json');
-$obj = json_decode($file, true);
-echo 'Page id is: '. $obj['query']['pages']['15580374']['pageid'] . '<br>';
-echo 'Page title is : '. $obj['query']['pages']['15580374']['title'];
-
+function task4()
+{
+    $fp = fopen('https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json', 'r');
+    file_put_contents('filejson.json', $fp);
+    $file = file_get_contents('filejson.json');
+    $obj = json_decode($file, true);
+    echo 'Page id is: ' . $obj['query']['pages']['15580374']['pageid'] . '<br>';
+    echo 'Page title is : ' . $obj['query']['pages']['15580374']['title'];
 
 
 }
