@@ -47,34 +47,40 @@ function task2()
 {
     $library = [
         'books' => [
-            ['name' => 'The Dead Souls', 'autor' => 'Gogol', 'pages' => 230],
-            ['name' => 'Idiot', 'autor' => 'Dostoyevsky', 'pages' => 330],
-            ['name' => "The capitan's daughter", 'autor' => 'Pushkin', 'pages' => 230],
+            ['name' => 'The Dead Souls', 'author' => 'Gogol', 'pages' => 230]
         ]
+
 
     ];
 
     $json_data = json_encode($library);
     file_put_contents('output.json', $json_data);
-    $decide = 'w';
-    if (rand(1, 2) == '1') {
-        $decide = 'w';
-        $fp = fopen('output.json', $decide);
-        file_put_contents('output2.json', $fp);
 
-    } else {
-        $decide = 'r';
-        $fp = fopen('output.json', $decide);
-        file_put_contents('output2.json', $fp);
+    $arrayOpen = file_get_contents('output.json');
+    $rand =  rand(0,1);
+
+    if($rand){
+        $arrayOpen['name']= 'Oblomov';
     }
+    $json_data2 = json_encode($arrayOpen);
+    file_put_contents('output2.json', $json_data2);
 
-    $output = json_encode('output.json');
-    $output2 = json_encode('output2.json');
+    $openOutput = file_get_contents('output.json');
+    $openOutput2 = file_get_contents('output2.json');
 
-    $result = array_diff_assoc($output, $output2);
+    $decodOutput = json_decode($openOutput, true);
+    $decodOutput2 = json_decode($openOutput2, true);
 
-    echo $result;
+    print_r($decodOutput);
+    echo '<br>';
+    print_r($decodOutput2);
 
+    $diff = array_diff_assoc($decodOutput, $decodOutput2);
+
+    if(!empty($diff)){
+        echo 'Разница в массивах: ';
+        print_r($diff);
+    }
 
 }
 
@@ -101,4 +107,13 @@ function task3()
 
         }
     }
+    echo '<br>';
+}
+
+// task 4
+
+function task4() {
+$fp = fopen('https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json' , 'r');
+print_r($fp);
+
 }
