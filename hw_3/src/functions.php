@@ -60,9 +60,11 @@ function task2()
     $rand =  rand(0,1);
 
     if($rand){
-        $arrayOpen['name']= 'Oblomov';
+        $arrayOpen['books']['author']= 'Oblomov';
+        echo 'Массив был изменен';
     }
-    $json_data2 = json_encode($arrayOpen);
+    $json_data2 = json_decode($arrayOpen);
+
     file_put_contents('output2.json', $json_data2);
 
     $openOutput = file_get_contents('output.json');
@@ -114,6 +116,12 @@ function task3()
 
 function task4() {
 $fp = fopen('https://en.wikipedia.org/w/api.php?action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=json' , 'r');
-print_r($fp);
+file_put_contents('filejson.json', $fp);
+$file = file_get_contents('filejson.json');
+$obj = json_decode($file, true);
+echo 'Page id is: '. $obj['query']['pages']['15580374']['pageid'] . '<br>';
+echo 'Page title is : '. $obj['query']['pages']['15580374']['title'];
+
+
 
 }
