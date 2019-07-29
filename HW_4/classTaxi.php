@@ -1,11 +1,13 @@
 <?php
+
 interface iPlanTaxi
 {
-    public function calculate($km, $minuts, $age);
+    public function calculate($km, $minuts, $age, $addservice);
 }
 
-trait AdditionalService
+trait GPS
 {
+
 }
 
 abstract class Tarifs implements iPlanTaxi
@@ -18,10 +20,10 @@ abstract class Tarifs implements iPlanTaxi
 
     public $valueTotal;
 
-    public function calculate($km, $minuts, $age)
+    public function calculate($km, $minuts, $age, $addservice)
     {
 
-        $this->valueTotal =  $this->valuePerKm * $km + $this->valuePerMin * $minuts;
+        $this->valueTotal = $this->valuePerKm * $km + $this->valuePerMin * $minuts;
 
 
         if ($age >= $this->minAge && $age <= 21) {
@@ -41,14 +43,14 @@ abstract class Tarifs implements iPlanTaxi
 
 class Basic extends Tarifs
 {
-    public function calculate($km, $minuts, $age)
+    public function calculate($km, $minuts, $age, $addservice)
     {
 
         $this->valuePerKm = 10;
         $this->valuePerMin = 3;
-        parent::calculate($km, $minuts, $age);
+        parent::calculate($km, $minuts, $age, $addservice);
     }
 }
 
 $basic = new Basic;
-echo $basic->calculate(20, 10, 20);
+echo $basic->calculate(20, 10, 20, 0);
