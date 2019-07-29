@@ -4,7 +4,7 @@
 interface iPlanTaxi
 {
 
-    public function calculate($valuePerKm, $valuePerMin, $age);
+    public function calculate($km, $minuts, $age);
 
 }
 
@@ -19,21 +19,19 @@ abstract class Tarifs implements iPlanTaxi
 {
     public $minuts;
     public $km;
-    protected $valuePerKm;
-    protected $valuePerMin;
+    protected $valuePerKm = 1;
+    protected $valuePerMin = 1;
     public $minAge = 18;
     public $maxAge = 65;
     public $age;
     public $valueTotal;
 
 
+
     public function calculate($km, $minuts, $age)
     {
-        $this->valuePerKm = $valuePerKm;
-        $this->valuePerMin = $valuePerMin;
-        $this->minuts = $minuts;
-        $this->age = $age;
-        $this->valueTotal = $valuePerKm * $km + $valuePerMin * $minuts;
+
+        $this->valueTotal = $this->valuePerKm * $this->km + $this->valuePerMin * $this->minuts;
 
         if ($age >= $this->minAge && $age <= 21) {
             $tenPercent = ($this->valueTotal / 100) * 10;
@@ -41,8 +39,9 @@ abstract class Tarifs implements iPlanTaxi
             return $this->valueTotal;
         } else if ($age <= $this->maxAge && $age >= $this->minAge) {
             return $this->valueTotal;
+
         } else {
-            echo "This client can't use our service";
+            echo $this->valueTotal;
         }
 
     }
@@ -50,18 +49,19 @@ abstract class Tarifs implements iPlanTaxi
 
 class Basic extends Tarifs
 {
-    protected $valuePerKm = 10;
-    protected $valuePerMin = 3;
 
 
-    public function calculate()
+    public function calculate($km, $minuts, $age)
     {
+        $this->valuePerKm = 10;
+        $this->valuePerMin = 3;
+
         parent::calculate($km, $minuts, $age);
+
     }
 
 }
 
 $basic = new Basic;
-echo $basic->calculate(4, 10, 25);
-
+echo $basic->calculate(20,10, 37);
 
