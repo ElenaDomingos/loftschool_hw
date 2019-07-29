@@ -27,15 +27,6 @@ abstract class Tarifs implements iPlanTaxi
     public $valueTotal;
 
 
-//    public function __construct($km, $minuts, $age)
-//    {
-//        $this->valuePerKm = $valuePerKm;
-//        $this->valuePerMin = $valuePerMin;
-//        $this->km = $km;
-//        $this->minuts = $minuts;
-//        $this->age = $age;
-//    }
-
     public function calculate($km, $minuts, $age)
     {
         $this->valuePerKm = $valuePerKm;
