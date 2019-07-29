@@ -10,32 +10,39 @@ interface iPlanTaxi
 
 trait AdditionalService
 {
-    
+
+
 }
 
 
 abstract class Tarifs implements iPlanTaxi
 {
-    public $valuePerKm;
-    public $valuePerMin;
+    public $minuts;
+    public $km;
+    protected $valuePerKm;
+    protected $valuePerMin;
     public $minAge = 18;
     public $maxAge = 65;
     public $age;
     public $valueTotal;
 
 
-    public function __construct($valuePerKm, $valuePerMin, $age)
-    {
-        $this->valuePerKm = $valuePerKm;
-        $this->valuePerMin = $valuePerMin;
-        $this->age = $age;
-    }
+//    public function __construct($km, $minuts, $age)
+//    {
+//        $this->valuePerKm = $valuePerKm;
+//        $this->valuePerMin = $valuePerMin;
+//        $this->km = $km;
+//        $this->minuts = $minuts;
+//        $this->age = $age;
+//    }
 
-    public function calculate($valuePerKm, $valuePerMin, $age)
+    public function calculate($km, $minuts, $age)
     {
         $this->valuePerKm = $valuePerKm;
         $this->valuePerMin = $valuePerMin;
-        $this->valueTotal = $valuePerKm + $valuePerMin;
+        $this->minuts = $minuts;
+        $this->age = $age;
+        $this->valueTotal = $valuePerKm * $km + $valuePerMin * $minuts;
 
         if ($age >= $this->minAge && $age <= 21) {
             $tenPercent = ($this->valueTotal / 100) * 10;
@@ -52,10 +59,18 @@ abstract class Tarifs implements iPlanTaxi
 
 class Basic extends Tarifs
 {
-$this->calculate(10,3, 22);
+    protected $valuePerKm = 10;
+    protected $valuePerMin = 3;
+
+
+    public function calculate()
+    {
+        parent::calculate($km, $minuts, $age);
+    }
+
 }
 
 $basic = new Basic;
-echo $basic->calculate();
+echo $basic->calculate(4, 10, 25);
 
 
