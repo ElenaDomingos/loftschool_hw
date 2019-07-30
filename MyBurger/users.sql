@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `usuarios`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `email`, `name`, `phone`) VALUES
+INSERT INTO `users` (`id`, `email`, `name`, `phone`) VALUES
 (10, 'elenaldomingos@gmail.com', 'ELena', '5533984416150');
 
 --
@@ -49,7 +49,7 @@ INSERT INTO `usuarios` (`id`, `email`, `name`, `phone`) VALUES
 --
 -- Indexes for table `usuarios`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -59,7 +59,7 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
