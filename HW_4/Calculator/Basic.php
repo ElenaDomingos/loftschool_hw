@@ -1,6 +1,7 @@
 <?php
+namespace Calculator\Basic;
 
-namespace Calculator;
+use Calculator\Tarifs;
 
 class Basic extends Tarifs
 {
@@ -12,3 +13,6 @@ class Basic extends Tarifs
         parent::calculate($km, $minuts, $age, $gps, $additionaldriver);
     }
 }
+
+$basic = new Basic();
+echo $basic->calculate(20, 10, 20, 0, 0);

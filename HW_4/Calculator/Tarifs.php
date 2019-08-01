@@ -1,6 +1,6 @@
 <?php
 
-namespace Calculator;
+namespace Calculator\Tarifs;
 use Calculator\interfaces\iPlanTaxi;
 
 abstract class Tarifs implements iPlanTaxi
