@@ -1,9 +1,11 @@
 <?php
-namespace Calculator\Basic;
+namespace Calculator;
+//require '../vendor/autoload.php';
+require_once 'Tarifs.php';
 
-use Calculator\Tarifs;
+use Tariffs;
 
-class Basic extends Tarifs
+class Basic extends Tariffs
 {
     public function calculate($km, $minuts, $age, $gps, $additionaldriver)
     {
@@ -14,5 +16,6 @@ class Basic extends Tarifs
     }
 }
 
-$basic = new Basic();
-echo $basic->calculate(20, 10, 20, 0, 0);
+$newBasic = new Basic();
+$newBasic->calculate(2, 2, 2, 2, 2);
+

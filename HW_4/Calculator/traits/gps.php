@@ -1,5 +1,5 @@
 <?php
-
+namespace Calculator\traits;
 trait GPS {
     public function gps($minuts) {
         if($minuts>60){

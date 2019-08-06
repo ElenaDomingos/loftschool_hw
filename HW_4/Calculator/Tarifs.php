@@ -1,13 +1,16 @@
 <?php
+namespace Calculator;
 
-namespace Calculator\Tarifs;
-use Calculator\interfaces\iPlanTaxi;
+require_once 'interfaces/iPlanTaxi.php';
+require 'traits/gps.php';
+require 'traits/additionalDriver.php';
+use Calculator\iPlanTaxi;
 
-abstract class Tarifs implements iPlanTaxi
+abstract class Tariffs implements  iPlanTaxi
 {
 
-    protected $valuePerKm = 1;
-    protected $valuePerMin = 1;
+    protected $valuePerKm ;
+    protected $valuePerMin ;
     public $minAge = 18;
     public $maxAge = 65;
 
@@ -39,16 +42,16 @@ abstract class Tarifs implements iPlanTaxi
             echo $this->valueTotal;
         }
 
-        if($gps) {
-            use GPS {
-                return $this->valueTotal + $valueGPS;
-            }
-        }
-
-        if($additionaldriver){
-            use AdditionalDriver {
-                return $this->valueTotal + $valurForAddDriver;
-            }
-        }
+//        if($gps) {
+//            use GPS {
+//                return $this->valueTotal + $valueGPS;
+//            }
+//        }
+//
+//        if($additionaldriver){
+//            use AdditionalDriver {
+//                return $this->valueTotal + $valurForAddDriver;
+//            }
+//        }
     }
 }

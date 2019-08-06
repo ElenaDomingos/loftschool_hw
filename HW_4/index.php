@@ -1,8 +1,10 @@
 <?php
-
+require 'vendor/autoload.php';
+require_once 'Calculator/Basic.php';
+require_once 'Calculator/PerHour.php';
 use Calculator\Basic;
 use Calculator\PerHour;
-use Calculator\PerDay;
+
 
 $basic = new Basic();
 echo $basic->calculate(20, 10, 20, 0, 0);
