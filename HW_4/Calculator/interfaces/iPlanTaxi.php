@@ -1,5 +1,5 @@
 <?php
-namespace Calculator\iPlanTaxi;
+namespace Calculator\interfaces;
 
 interface iPlanTaxi
 {

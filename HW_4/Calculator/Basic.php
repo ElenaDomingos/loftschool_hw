@@ -3,7 +3,7 @@ namespace Calculator;
 //require '../vendor/autoload.php';
 require_once 'Tarifs.php';
 
-use Tariffs;
+use Calculator\Tariffs;
 
 class Basic extends Tariffs
 {

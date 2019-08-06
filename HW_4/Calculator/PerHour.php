@@ -1,5 +1,7 @@
 <?php
 namespace Calculator;
+require 'Tarifs.php';
+use Tarifs;
 
 class PerHour extends Tarifs
 {
