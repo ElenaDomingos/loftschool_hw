@@ -8,6 +8,7 @@ require 'traits/additionalDriver.php';
 
 use Calculator\interfaces\iPlanTaxi;
 use Calculator\traits\GPS;
+use Calculator\traits\additionalDriver;
 
 
 abstract class Tariffs implements iPlanTaxi
@@ -18,17 +19,28 @@ abstract class Tariffs implements iPlanTaxi
     public $minAge = 18;
     public $maxAge = 65;
 
-    public $valueTotal;
+    public $valueTotal=0;
 
     public function calculate($km, $minuts, $age, $gps, $additionaldriver)
     {
-        echo "Passing by Tarifs class and calculate method";
-        echo "<br>";
-        echo "km " . $km . " minuts " . $minuts . " age " . $age;
+
+
+        if($gps !== 0) {
+
+            return $valueGPS;
+            $this->valueTotal = $this->valuePerKm * $km + $this->valuePerMin * $minuts + $valueGPS;
+        }
+
+        if($additionaldriver !==0){
+
+                return $valurForAddDriver;
+                $this->valueTotal .= $this->valuePerKm * $km + $this->valuePerMin * $minuts + $valurForAddDriver;
+
+        }
 
         $this->valueTotal = $this->valuePerKm * $km + $this->valuePerMin * $minuts;
         echo "<br>";
-        echo "ValueTotal " . $this->valueTotal;
+
 
         if ($age >= $this->minAge && $age <= 21) {
             $tenPercent = ($this->valueTotal / 100) * 10;
@@ -43,17 +55,9 @@ abstract class Tariffs implements iPlanTaxi
             echo "<br>";
             echo $this->valueTotal;
         } else {
-            echo $this->valueTotal;
+            echo 'This cliend cant use our service';
         }
 
-//        if($gps) {
-//
-//        }
-//
-//        if($additionaldriver){
-//            use AdditionalDriver {
-//                return $this->valueTotal + $valurForAddDriver;
-//            }
-//        }
+
     }
 }

@@ -16,6 +16,5 @@ class Basic extends Tariffs
     }
 }
 
-$newBasic = new Basic();
-$newBasic->calculate(2, 2, 2, 2, 2);
+
 
