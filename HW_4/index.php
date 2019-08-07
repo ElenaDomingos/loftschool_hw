@@ -7,7 +7,7 @@ use Calculator\Basic;
 
 
 $basic = new Basic();
-echo $basic->calculate(20, 10, 20, 1, 1);
+echo $basic->calculate(20, 120, 25, 1, 1);
 
 
 

@@ -29,22 +29,24 @@ abstract class Tariffs implements iPlanTaxi
 
         if($gps !== 0) {
 
-            $valueGPS = 15 *  60;
+            $valueGPS = $minuts/60 * 15;
 
-            $this->valueTotal = $this->valuePerKm * $km + $this->valuePerMin * $minuts + $valueGPS;
+            $this->valueTotal = ($this->valuePerKm * $km) + ($this->valuePerMin * $minuts) + $valueGPS;
+            echo 'GPS was selected <br>';
+        }else {
+            $this->valueTotal = ($this->valuePerKm * $km) + ($this->valuePerMin * $minuts);
         }
 
         if($additionaldriver !==0){
 
               $valueForAddDriver = 200;
 
-                
-                $this->valueTotal .= $this->valuePerKm * $km + $this->valuePerMin * $minuts + $valueForAddDriver;
 
+                $this->valueTotal += $this->valuePerKm * $km + $this->valuePerMin * $minuts + $valueForAddDriver;
+                echo 'Additional Driver was selected';
         }
 
-        $this->valueTotal = $this->valuePerKm * $km + $this->valuePerMin * $minuts;
-        echo "<br>";
+
 
 
         if ($age >= $this->minAge && $age <= 21) {
@@ -55,12 +57,12 @@ abstract class Tariffs implements iPlanTaxi
             echo "<br>";
             echo $this->valueTotal;
         } else if ($age <= $this->maxAge && $age >= $this->minAge) {
+
+
             echo "<br>";
-            echo " age is less and max age and more than min age";
-            echo "<br>";
-            echo $this->valueTotal;
+            echo $this->valueTotal .' Руб.';
         } else {
-            echo 'This cliend cant use our service';
+            echo 'This client can\'t use our service';
         }
 
 
