@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 require_once 'Calculator/Basic.php';
 require_once 'Calculator/PerHour.php';
 

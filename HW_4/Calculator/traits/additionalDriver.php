@@ -4,10 +4,10 @@ namespace Calculator\traits;
 trait AdditionalDriver
 {
 
-    public function additionaldriver()
+    public function additionaldriver($valueForAddDriver)
     {
 
-        return $valurForAddDriver = 200;
+       $valueForAddDriver->calculate();
 
     }
 }

@@ -4,10 +4,11 @@ namespace Calculator\traits;
 
 trait GPS
 {
-    public function gps($minuts)
+
+    public function gps($minuts, $valueGPS)
     {
         if ($minuts > 60) {
-            $valueGPS = (int)($minuts / 60) * 15;
+            $valueGPS->calculate($minuts);
         } else {
             echo 'GPS service cant be used';
         }

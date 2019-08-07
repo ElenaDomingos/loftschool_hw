@@ -1,9 +1,10 @@
 <?php
 namespace Calculator;
 //require '../vendor/autoload.php';
-require_once 'Tarifs.php';
+require_once 'Tariffs.php';
 
 use Calculator\Tariffs;
+
 
 class Basic extends Tariffs
 {
