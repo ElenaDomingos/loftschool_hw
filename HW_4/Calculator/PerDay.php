@@ -1,9 +1,9 @@
 <?php
-namespace Calculator\PerDay;
+namespace Calculator;
+require_once 'Tariffs.php';
+use Calculator\Tariffs;
 
-use Calculator\Tarifs;
-
-class PerDay extends Tarifs
+class PerDay extends Tariffs
 {
     public function calculate($km, $minuts, $age, $gps, $additionaldriver)
     {
@@ -12,7 +12,7 @@ class PerDay extends Tarifs
         if($minuts < 1440) {
             $minuts = 1440;
         }
-               $this->valuePerMin = 1000/0.25;
+               $this->valuePerMin = 1000/24;
         parent::calculate($km, $minuts, $age, $gps, $additionaldriver);
     }
 }
