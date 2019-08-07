@@ -1,6 +1,7 @@
 <?php
+
 namespace Calculator;
-//require '../vendor/autoload.php';
+
 require_once 'Tariffs.php';
 
 use Calculator\Tariffs;
